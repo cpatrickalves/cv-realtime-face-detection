@@ -30,6 +30,14 @@ python face_recognition.py image.jpg
 ```
 The script will create an output with a similar name. It with add the *_output* in the file name (ex: image_output.jpg)
 
+#### Steamlit
+
+You can also run this script as an [Streamlit](https://www.streamlit.io/) application:
+```
+streamlit run app.py
+```
+It will automatically open the browser and show the app.
+
 ## Built With
 
 * [OpenCV](https://opencv.org/) - Open Computer Vision Library.
