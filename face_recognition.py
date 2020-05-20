@@ -5,8 +5,8 @@ import sys
 
 # Loading the cascades
 # Cascades are a series of filters that are applied one after the other
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
+face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('cascades/haarcascade_eye.xml')
 
 # Create a function that will do the detections
 def detect(gray, frame):
@@ -64,6 +64,8 @@ def detect_from_img_file(input_file):
     print(output_file)
     cv2.imwrite(output_file, canvas)
 
+    return output_file
+
 
 def detect_from_video():
     # Turn the webcam on.
@@ -98,8 +100,14 @@ def detect_from_video():
 
 if __name__ == '__main__':
 
-	detect_from_video()
+	# Check input
+    try:
+        input_file = sys.argv[1]
+    except:
+        input_file = None
 
-    # Get input file
-    #input_file = sys.argv[1]
-    #detect_from_img_file(input_file)
+    if input_file:
+        detect_from_img_file(input_file)
+    else:
+        detect_from_video()
+
