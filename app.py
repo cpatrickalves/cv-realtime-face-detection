@@ -10,6 +10,7 @@ In this project, I use OpenCV and Viola-Jones Algorithm to build a simple face d
 The models seek to detect faces, eyes and mouth.
 """
 model_description = None
+smile = False
 
 st.markdown(description)
 
@@ -21,15 +22,10 @@ st.sidebar.header("Select the model")
 model = st.sidebar.radio('', ['Viola–Jones'])
 st.sidebar.markdown("*** More models comming soon ... ***")
 
-st.sidebar.header("About")
-st.sidebar.info("""\
-        * Create by: [Patrick Alves](https://www.linkedin.com/in/cpatrickalves/)
-
-        * source code: [GitHub](https://github.com/cpatrickalves/cv-realtime-face-detection)
-    """)
-
 # Get the model
 if model == 'Viola–Jones':
+
+    smile = st.sidebar.checkbox('Detect smile')
     detect = fr.detect_from_img_file
 
     model_description = """
@@ -64,7 +60,7 @@ if input_type == 'Image demo':
     st.image(selected_image, use_column_width=True)
 
     if st.button('Detect faces'):
-        result = detect(f'images/{image}')
+        result = detect(f'images/{image}', detect_smile=smile)
         output_image = Image.open(result)
         st.image(output_image, use_column_width=True)
 
@@ -88,7 +84,7 @@ if input_type == 'Image upload':
 
     # Detect faces
     if st.button('Detect faces'):
-        result = detect(uploaded)
+        result = detect(uploaded, detect_smile=smile)
         output_image = Image.open(result)
         st.image(output_image, use_column_width=True)
 
@@ -97,3 +93,12 @@ if input_type == 'Image upload':
 if input_type == 'Video from webcam':
 
     st.markdown('## Comming soon ...')
+
+
+# ---------------------#
+st.sidebar.header("About")
+st.sidebar.info("""\
+        * Create by: [Patrick Alves](https://www.linkedin.com/in/cpatrickalves/)
+
+        * source code: [GitHub](https://github.com/cpatrickalves/cv-realtime-face-detection)
+    """)
