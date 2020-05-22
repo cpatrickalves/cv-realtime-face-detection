@@ -26,9 +26,11 @@ python face_recognition.py
 
 To perform the face detection on an image, just add the file name as an argument:
 ```
-python face_recognition.py image.jpg
+python face_recognition.py -f image.jpg
 ```
 The script will create an output with a similar name. It with add the *_output* in the file name (ex: image_output.jpg)
+
+Add the `-s` flag to perform smile detection.
 
 ### Web application
 
