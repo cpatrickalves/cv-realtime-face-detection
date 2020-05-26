@@ -32,6 +32,11 @@ The script will create an output with a similar name. It with add the *_output* 
 
 Add the `-s` flag to perform smile detection.
 
+#### Example
+
+<img src="https://user-images.githubusercontent.com/22003608/82897863-b27bef00-9f2e-11ea-983e-cec5fff8bc15.jpg" width=500>
+
+
 ### Web application
 
 You can also run this script as an [Streamlit](https://www.streamlit.io/) application:
